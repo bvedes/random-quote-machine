@@ -1,10 +1,10 @@
-import React from 'react';
-import Loader from '../Loader/index';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTwitter } from '@fortawesome/free-brands-svg-icons';
-import { genOffSet, getColor, fetchQuote } from '../../utils';
+import React from "react";
+import Loader from "../Loader/index";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTwitter } from "@fortawesome/free-brands-svg-icons";
+import { genOffSet, getColor, fetchQuote } from "../../utils";
 
-import './QuoteBox.scss';
+import "./QuoteBox.scss";
 
 class QuoteBox extends React.Component {
   state = {
@@ -40,19 +40,32 @@ class QuoteBox extends React.Component {
 
   render() {
     return (
-      <div className="QuoteBox" style={{ background: getColor() }}>
-        <div className="message">{this.state.message || <Loader />}</div>
-        <div className="author">{this.state.author}</div>
+      <div
+        className="QuoteBox"
+        id="quote-box"
+        style={{ background: getColor() }}
+      >
+        <div className="message" id="text">
+          {this.state.message || <Loader />}
+        </div>
+        <div className="author" id="author">
+          {this.state.author}
+        </div>
         <div className="icons-bar">
           <a
             target="_blank"
+            id="tweet-quote"
             rel="noopener noreferrer"
             href={`https://twitter.com/intent/tweet?text=${this.state.message}, ${this.state.author}`}
           >
             <FontAwesomeIcon className="icon" icon={faTwitter} />
           </a>
 
-          <button className="btn btn-primary btn-sm" onClick={this.handleQuote}>
+          <button
+            className="btn btn-primary btn-sm"
+            id="new-quote"
+            onClick={this.handleQuote}
+          >
             New Quote
           </button>
         </div>
